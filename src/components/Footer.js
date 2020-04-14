@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from '../css/footer.module.css'
-import links from '../constants/links'
-import social from '../constants/social-links'
-import { Link } from 'gatsby'
+import React from "react"
+import styles from "../css/footer.module.css"
+import links from "../constants/links"
+import social from "../constants/social-links"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Footer = () => {
     return (
@@ -10,22 +10,28 @@ const Footer = () => {
             <div className={styles.links}>
                 {links.map((item, index) => {
                     return (
-                        <Link key={index} to={item.path}>
+                        <AniLink key={index} to={item.path} fade>
                             {item.text}
-                        </Link>
+                        </AniLink>
                     )
                 })}
                 <div className={styles.icons}>
                     {social.map((item, index) => {
                         return (
-                            <a key={index} href={item.url} target='_blank' rel="noopener noreferrer">
+                            <a
+                                key={index}
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 {item.icon}
                             </a>
                         )
                     })}
                 </div>
                 <div className={styles.copyright}>
-                    copyright &copy; backroads travel company {new Date().getFullYear()} all rights reserved
+                    copyright &copy; backroads travel company{" "}
+                    {new Date().getFullYear()} all rights reserved
                 </div>
             </div>
         </footer>
